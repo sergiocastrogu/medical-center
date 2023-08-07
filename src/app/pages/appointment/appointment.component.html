@@ -1,0 +1,58 @@
+<div class="filter">
+    <mat-form-field class="col-md-4">
+        <mat-label>Filtrar por doctor</mat-label>
+        <mat-select [(ngModel)]="selectedDoctor" (ngModelChange)="getAppointmentByDoctor()">
+            <mat-option *ngFor="let doctor of listDoctor" [value]="doctor">{{doctor.firstName}}
+                {{doctor.lastName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-md-4">
+        <mat-label>Filtrar por usuario</mat-label>
+        <mat-select [(ngModel)]="selectedUser" (ngModelChange)="getAppointmentByUser()">
+            <mat-option *ngFor="let doctor of listUsers" [value]="doctor">{{doctor.firstName}}
+                {{doctor.lastName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <input class="input-appointment-num" [(ngModel)]="selectAppointment" (ngModelChange)="getAppointmentById()" matInput
+        placeholder="Filtrar número de cita" type="number">
+    <button class="btn btn-success" [disabled]="!selectAppointment && !selectedDoctor && !selectedUser"
+        (click)="search()">Buscar</button>
+</div>
+
+<div class="table-container">
+    <table class="table table-hover">
+        <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Fecha de registro</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of listAppointment">
+                <td scope="row">{{appointment.id}}</td>
+                <td scope="col">{{getNameDoctor(appointment.userDoctorId)}}</td>
+                <td scope="col">{{getNameUser(appointment.userPatientId)}}</td>
+                <td scope="col">{{appointment.date}}</td>
+                <td scope="col">{{getState(appointment.stateId)}}</td>
+                <td scope="col">{{appointment.observations}}</td>
+
+                <td scope="col" *ngIf="appointment.stateId == 1">
+                    <button type="button" class="btn btn-info"
+                        (click)="updateClient(appointment, 2)">Programar</button>
+                </td>
+                <td scope="col" *ngIf="appointment.stateId == 2">
+                    <button type="button" class="btn btn-danger" (click)="updateClient(appointment, 3)">Finalizar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="contenedor">
+    <button (click)="createAppointment()" class="botonF1">
+        <span>+</span>
+    </button>
+</div>

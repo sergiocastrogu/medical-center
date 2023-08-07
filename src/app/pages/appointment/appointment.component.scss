@@ -1,0 +1,61 @@
+.input-appointment-num {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contenedor {
+    width: 90px;
+    height: 240px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.botonF1 {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background: #F44336;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 36px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: .3s;
+}
+
+.table-container {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    overflow: auto;
+}
+
+@media (min-width: 720px) {
+    .filter {
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .input-appointment-num {}
+
+    .table-container {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+
+}

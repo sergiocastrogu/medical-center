@@ -1,0 +1,27 @@
+<div *ngIf="formGroup">
+    <form [formGroup]="formGroup" class="form-create-appointment">
+        <mat-form-field>
+            <mat-label>Selecciona un doctor</mat-label>
+            <mat-select formControlName="userDoctorId">
+                <mat-option *ngFor="let doctor of listDoctor" [value]="doctor.id">{{doctor.firstName}}
+                    {{doctor.lastName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Selecciona el usuario</mat-label>
+            <mat-select formControlName="userPatientId">
+                <mat-option *ngFor="let user of listUsers" [value]="user.id">{{user.firstName}}
+                    {{user.lastName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Fecha</mat-label>
+            <input matInput type="date" formControlName="date">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Observaciones</mat-label>
+            <input matInput formControlName="observations">
+        </mat-form-field>
+        <button class="btn btn-success" (click)="create()">Guardar</button>
+    </form>
+</div>

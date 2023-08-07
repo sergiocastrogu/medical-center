@@ -1,0 +1,14 @@
+<div *ngIf="formGroup">
+    <form [formGroup]="formGroup" class="form-update-user">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="firstName" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="lastName" required>
+        </mat-form-field>
+        <mat-checkbox formControlName="active">Activo</mat-checkbox>
+        <button class="btn btn-success" (click)="update()">Actualizar</button>
+    </form>
+</div>

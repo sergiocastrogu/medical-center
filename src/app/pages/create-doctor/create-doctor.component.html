@@ -1,0 +1,30 @@
+
+<div class="table-container">
+    <table class="table table-hover">
+        <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of listUsers">
+                <td scope="row">{{user.id}}</td>
+                <td scope="col">{{user.firstName}}</td>
+                <td scope="col">{{user.lastName}}</td>
+                <td scope="col">{{user.birthDate | date: 'dd/MM/yyyy'}}</td>
+                <td scope="col">{{user.active}}</td>
+                <td scope="col">
+                    <button type="button" class="btn btn-warning" (click)="updateUser(user)">Actualizar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="contenedor">
+    <button (click)="createUser()" class="botonF1">
+        <span>+</span>
+    </button>
+</div>
